@@ -200,3 +200,64 @@ const matrix = [
   [20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54],
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
+
+function greatestProduct(matrix) {
+  const rowLength = matrix[0].length;
+  const colLength = matrix.length;
+
+  let maxProduct = 0;
+
+  for(let i=0; i<colLength; i++) {
+    for(let j=0; j<rowLength; j++) {
+
+      if(j+3 > rowLength-1)
+      {
+        continue
+      }
+      else
+      {
+        let rowProduct = matrix[i][j] * matrix[i][j+1] * matrix[i][j+2] * matrix[i][j+3];
+        if(rowProduct > maxProduct)
+        {
+          maxProduct = rowProduct;
+        }
+      }
+
+      if(i+3 > colLength - 1)
+      {
+        continue
+      }
+      else
+      {
+        let colProduct = matrix[i][j] * matrix[i+1][j] * matrix[i+2][j] * matrix[i+3][j]
+
+        if(colProduct > maxProduct)
+        {
+          maxProduct = colProduct
+        }
+      }
+    }
+  }
+  return maxProduct;
+}
+
+function greatestProductOfDiagonals(matrix) {
+  const rowLength = matrix[0].length;
+  const colLength = matrix.length;
+
+  let maxProduct = 0;
+
+  for(let i=0; i<colLength; i++) {
+    for(let j=0; j<rowLength; j++) {
+      if(i+3 <= colLength-1 && j+3 <= rowLength-1)
+      {
+        let diagProduct = matrix[i][j] * matrix[i+1][j+1] * matrix[i+2][j+2] * matrix[i+3][j+3];
+        if(diagProduct > maxProduct)
+        {
+          maxProduct = diagProduct;
+        }
+      }
+    }
+  }
+  return maxProduct;
+}
