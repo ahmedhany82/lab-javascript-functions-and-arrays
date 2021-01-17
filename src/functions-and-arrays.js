@@ -210,11 +210,7 @@ function greatestProduct(matrix) {
   for(let i=0; i<colLength; i++) {
     for(let j=0; j<rowLength; j++) {
 
-      if(j+3 > rowLength-1)
-      {
-        continue
-      }
-      else
+      if(j+3 <= rowLength-1)
       {
         let rowProduct = matrix[i][j] * matrix[i][j+1] * matrix[i][j+2] * matrix[i][j+3];
         if(rowProduct > maxProduct)
@@ -223,11 +219,7 @@ function greatestProduct(matrix) {
         }
       }
 
-      if(i+3 > colLength - 1)
-      {
-        continue
-      }
-      else
+      if(i+3 <= colLength - 1)
       {
         let colProduct = matrix[i][j] * matrix[i+1][j] * matrix[i+2][j] * matrix[i+3][j]
 
